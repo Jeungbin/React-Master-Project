@@ -1,26 +1,17 @@
 import React, { useState } from "react";
 import data from "./data";
+import List from "/List";
 
 function App() {
-  const [clear, setClear] = useState(false);
+  const [people, setPeople] = useState(data);
   return (
-    <div className="big-box">
-      <h2>{data.length} birthdays today</h2>
-      <section>
-        {clear === true
-          ? ""
-          : data.map((item) => {
-              return (
-                <div key={item.id}>
-                  <img src={item.image} />
-                  <p>{item.name}</p>
-                  <p>{item.age}</p>
-                </div>
-              );
-            })}
+    <main>
+      <section className="container">
+        <h3> {people.length} birthdays today</h3>
+        <List people={people} />
+        <button onClick={() => setClear([])}>Clear All</button>
       </section>
-      <button onClick={() => setClear(true)}>Clear All</button>
-    </div>
+    </main>
   );
 }
 
