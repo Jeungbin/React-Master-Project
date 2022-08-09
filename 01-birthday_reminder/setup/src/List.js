@@ -1,3 +1,5 @@
+import React from "react";
+
 const List = ({ people }) => {
   return (
     <>
@@ -16,3 +18,5 @@ const List = ({ people }) => {
     </>
   );
 };
+
+export default List;
