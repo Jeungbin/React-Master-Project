@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 
-const Tour = ({ id, name, info, image, price, removeTour }) => {
-  const [readMore, setReadmore] = useState(false);
+const Tour = ({ id, image, name, info, price, removeTour }) => {
+  const [readMore, setReadMore] = useState(false);
+
   return (
-    <section>
-      <img src={image} alt="" />
+    <>
+      <h1>{name}</h1>
       <p>
-        {readMore ? info : `${info.substring(0, 200)}...`}
-        <button onClick={() => setReadmore(!readMore)}>
-          {readMore ? "readless" : "readmore"}
-        </button>
+        {readMore ? info : `${info.substring(1, 30)}...`}
+        <button onClick={() => setReadMore(!readMore)}>Read More</button>
       </p>
-      <button onClick={() => removeTour(id)}>not interested</button>
-    </section>
+
+      <button onClick={() => removeTour(id)}>remove</button>
+    </>
   );
 };
 

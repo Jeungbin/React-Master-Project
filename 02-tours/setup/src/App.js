@@ -13,11 +13,11 @@ function App() {
     setTours(newTours);
   };
 
-  const fetchUrl = async () => {
+  const fetchTours = async () => {
     setLoading(true);
     try {
-      const resposne = await fetch(url);
-      const tours = await resposne.json();
+      const response = await fetch(url);
+      const tours = await response.json();
       setLoading(false);
       setTours(tours);
     } catch (error) {
@@ -27,21 +27,19 @@ function App() {
   };
 
   useEffect(() => {
-    fetchUrl();
+    fetchTours();
   }, []);
+
   if (loading) {
-    return (
-      <div>
-        <Loading />
-      </div>
-    );
+    return <Loading />;
   }
+
   if (tours.length === 0) {
     return (
-      <div>
-        <h1>no tour left</h1>
-        <button onClick={() => fetchUrl()}>refresh</button>
-      </div>
+      <main>
+        <h1>no Tours anymore</h1>
+        <button onClick={() => fetchTours()}>Refresh</button>
+      </main>
     );
   }
   return (
